@@ -24,7 +24,7 @@ public class PostDaoService {
 	
 	private static List<Post> posts = new ArrayList<>();
 	
-	private static int postsCount = 0;
+	private static Long postsCount = 0L;
 	
 	static {
 		posts.add(new Post(++postsCount, "Hong", "Hong is", "she is a korean publisher", LocalDateTime.now().minusMonths(1)));

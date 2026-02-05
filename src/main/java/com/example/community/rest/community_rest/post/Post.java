@@ -25,7 +25,7 @@ import jakarta.validation.constraints.Size;
 public class Post {
 	@Id
 	@GeneratedValue
-	private Integer id;
+	private Long id;
 	@Size(min=1, message ="닉네임은 최소 한 글자 이상이여야 합니다.")
 	private String username;
 	@Size(min=10, message= "내용은 최소 열 글자 이상이여야 합니다.")
@@ -50,7 +50,7 @@ public class Post {
 		
 	}
 	
-	public Post(Integer id, String username,  String title, String description, LocalDateTime uploadDate) {
+	public Post(Long id, String username,  String title, String description, LocalDateTime uploadDate) {
 		super();
 		this.id = id;
 		this.username = username;
@@ -59,7 +59,7 @@ public class Post {
 		this.uploadDate = uploadDate;
 	}
 	
-	public Post(Integer id, String username, String description, LocalDateTime uploadDate, String title, List<Upload> uploads) {
+	public Post(Long id, String username, String description, LocalDateTime uploadDate, String title, List<Upload> uploads) {
 		super();
 		this.id = id;
 		this.username = username;
@@ -69,11 +69,11 @@ public class Post {
 		this.uploads = uploads;
 	}
 
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

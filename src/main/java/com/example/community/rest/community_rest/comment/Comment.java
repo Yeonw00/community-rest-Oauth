@@ -26,25 +26,25 @@ public class Comment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;  // 댓글 PK
 
-    // ✅ 어떤 게시글의 댓글인지
+    //  어떤 게시글의 댓글인지
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "post_id", nullable = false)
     @JsonBackReference  // 순환참조 방지 (Post ↔ Comment)
     private Post post;
     
-    // ✅ 대댓글 관계 설정 (부모 댓글 참조)
+    //  대댓글 관계 설정 (부모 댓글 참조)
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "parent_id")
     private Comment parent;
 
-    // ✅ 대댓글 리스트 (부모 댓글에서 자식 댓글 리스트 조회 가능)
+    // 대댓글 리스트 (부모 댓글에서 자식 댓글 리스트 조회 가능)
     @OneToMany(mappedBy = "parent", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Comment> replies = new ArrayList<>();
 
     @Column(nullable = false, length = 500)
     private String content;  // 댓글 내용
 
-    // ✅ 어떤 유저가 작성했는지
+    //  어떤 유저가 작성했는지
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;  // 댓글 작성자 (User 참조)
